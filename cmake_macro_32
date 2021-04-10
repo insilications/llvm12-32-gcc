@@ -1,0 +1,70 @@
+cmake ../llvm -G Ninja \
+-DCMAKE_INSTALL_LIBDIR=/usr/lib32 \
+-DCMAKE_INSTALL_PREFIX=/usr \
+-DLIB_INSTALL_DIR:PATH=/usr/lib32 \
+-DLIB_SUFFIX=32 \
+-DLLVM_LIBDIR_SUFFIX=32 \
+-DBUILD_SHARED_LIBS:BOOL=OFF \
+-DCLANG_DEFAULT_CXX_STDLIB="libstdc++" \
+-DLLVM_STATIC_LINK_CXX_STDLIB:BOOL=ON \
+-DLLVM_ENABLE_ASSERTIONS:BOOL=OFF \
+-DCLANG_DEFAULT_RTLIB=libgcc \
+-DCLANG_DEFAULT_UNWINDLIB=libgcc \
+-DLLVM_TARGETS_TO_BUILD="host;AMDGPU" \
+-DCLANG_LINK_CLANG_DYLIB:BOOL=OFF \
+-DLLVM_LINK_LLVM_DYLIB:BOOL=OFF \
+-DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
+-DCMAKE_AR=/usr/bin/gcc-ar \
+-DCMAKE_NM=/usr/bin/gcc-nm \
+-DCMAKE_RANLIB=/usr/bin/gcc-ranlib \
+-DCMAKE_BUILD_TYPE=Release \
+-DCMAKE_C_COMPILER=gcc \
+-DCMAKE_CXX_COMPILER=g++ \
+-DCMAKE_JOB_POOLS="full_jobs=10" \
+-DCMAKE_JOB_POOL_COMPILE="full_jobs" \
+-DCMAKE_JOB_POOL_LINK="full_jobs" \
+-DLLVM_ENABLE_PROJECTS="llvm;clang;parallel-libs;polly;pstl" \
+-DCMAKE_C_FLAGS_RELEASE="-m32 -mstackrealign -fomit-frame-pointer -fexceptions -Wl,--as-needed -fno-lto -fuse-ld=bfd -fuse-linker-plugin -fno-lto -ffat-lto-objects -Wl,--build-id=sha1 -Wno-error -Wl,-z,max-page-size=0x1000 -O2 -march=native -mtune=native -Wall -Wl,--enable-new-dtags -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -malign-data=cacheline -pipe -pthread -fPIC" \
+-DCMAKE_CXX_FLAGS_RELEASE="-m32 -mstackrealign -fomit-frame-pointer -fexceptions -Wl,--as-needed -fno-lto -fuse-ld=bfd -fuse-linker-plugin -fno-lto -ffat-lto-objects -Wl,--build-id=sha1 -Wno-error -Wl,-z,max-page-size=0x1000 -O2 -march=native -mtune=native -Wall -Wl,--enable-new-dtags -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -malign-data=cacheline -fvisibility-inlines-hidden -pipe -pthread -fPIC" \
+-DCMAKE_EXE_LINKER_FLAGS_RELEASE="-m32 -mstackrealign -fomit-frame-pointer -fexceptions -Wl,--as-needed -fno-lto -fuse-ld=bfd -fuse-linker-plugin -fno-lto -ffat-lto-objects -Wl,--build-id=sha1 -Wno-error -Wl,-z,max-page-size=0x1000 -O2 -march=native -mtune=native -Wall -Wl,--enable-new-dtags -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -malign-data=cacheline -pipe -pthread -fPIC" \
+-DCMAKE_MODULE_LINKER_FLAGS_RELEASE="-m32 -mstackrealign -fomit-frame-pointer -fexceptions -Wl,--as-needed -fno-lto -fuse-ld=bfd -fuse-linker-plugin -fno-lto -ffat-lto-objects -Wl,--build-id=sha1 -Wno-error -Wl,-z,max-page-size=0x1000 -O2 -march=native -mtune=native -Wall -Wl,--enable-new-dtags -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -malign-data=cacheline -pipe -pthread -fPIC" \
+-DCMAKE_SHARED_LINKER_FLAGS_RELEASE="-m32 -mstackrealign -fomit-frame-pointer -fexceptions -Wl,--as-needed -fno-lto -fuse-ld=bfd -fuse-linker-plugin -fno-lto -ffat-lto-objects -Wl,--build-id=sha1 -Wno-error -Wl,-z,max-page-size=0x1000 -O2 -march=native -mtune=native -Wall -Wl,--enable-new-dtags -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -malign-data=cacheline -pipe -pthread -fPIC" \
+-DCMAKE_C_FLAGS="-m32 -mstackrealign -fomit-frame-pointer -fexceptions -Wl,--as-needed -fno-lto -fuse-ld=bfd -fuse-linker-plugin -fno-lto -ffat-lto-objects -Wl,--build-id=sha1 -Wno-error -Wl,-z,max-page-size=0x1000 -O2 -march=native -mtune=native -Wall -Wl,--enable-new-dtags -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -malign-data=cacheline -pipe -pthread -fPIC" \
+-DCMAKE_CXX_FLAGS="-m32 -mstackrealign -fomit-frame-pointer -fexceptions -Wl,--as-needed -fno-lto -fuse-ld=bfd -fuse-linker-plugin -fno-lto -ffat-lto-objects -Wl,--build-id=sha1 -Wno-error -Wl,-z,max-page-size=0x1000 -O2 -march=native -mtune=native -Wall -Wl,--enable-new-dtags -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -malign-data=cacheline -fvisibility-inlines-hidden -pipe -pthread -fPIC" \
+-DCMAKE_EXE_LINKER_FLAGS="-m32 -mstackrealign -fomit-frame-pointer -fexceptions -Wl,--as-needed -fno-lto -fuse-ld=bfd -fuse-linker-plugin -fno-lto -ffat-lto-objects -Wl,--build-id=sha1 -Wno-error -Wl,-z,max-page-size=0x1000 -O2 -march=native -mtune=native -Wall -Wl,--enable-new-dtags -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -malign-data=cacheline -pipe -pthread -fPIC" \
+-DCMAKE_MODULE_LINKER_FLAGS="-m32 -mstackrealign -fomit-frame-pointer -fexceptions -Wl,--as-needed -fno-lto -fuse-ld=bfd -fuse-linker-plugin -fno-lto -ffat-lto-objects -Wl,--build-id=sha1 -Wno-error -Wl,-z,max-page-size=0x1000 -O2 -march=native -mtune=native -Wall -Wl,--enable-new-dtags -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -malign-data=cacheline -pipe -pthread -fPIC" \
+-DCMAKE_SHARED_LINKER_FLAGS="-m32 -mstackrealign -fomit-frame-pointer -fexceptions -Wl,--as-needed -fno-lto -fuse-ld=bfd -fuse-linker-plugin -fno-lto -ffat-lto-objects -Wl,--build-id=sha1 -Wno-error -Wl,-z,max-page-size=0x1000 -O2 -march=native -mtune=native -Wall -Wl,--enable-new-dtags -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -malign-data=cacheline -pipe -pthread -fPIC" \
+-DENABLE_LINKER_BUILD_ID:BOOL=ON \
+-DFFI_INCLUDE_DIR=`pkg-config --variable=includedir libffi` \
+-DLLVM_BINUTILS_INCDIR=/usr/include \
+-DLLVM_BUILD_EXAMPLES:BOOL=OFF \
+-DLLVM_BUILD_RUNTIME:BOOL=ON \
+-DLLVM_BUILD_TOOLS:BOOL=OFF \
+-DCLANG_BUILD_TOOLS:BOOL=OFF \
+-DLLVM_TOOL_CLANG_TOOLS_EXTRA_BUILD:BOOL=OFF \
+-DLLVM_TOOL_CLANG_BUILD:BOOL=OFF \
+-DLLVM_TOOL_COMPILER_RT_BUILD:BOOL=OFF \
+-DLLVM_TOOL_LLD_BUILD:BOOL=OFF \
+-DLLVM_TOOL_OPENMP_BUILD:BOOL=OFF \
+-DLIBCLANG_BUILD_STATIC:BOOL=ON \
+-DLLVM_INCLUDE_TOOLS:BOOL=OFF \
+-DLLVM_ENABLE_BINDINGS:BOOL=OFF \
+-DLLVM_ENABLE_FFI:BOOL=ON \
+-DLLVM_ENABLE_LIBCXX:BOOL=OFF \
+-DLLVM_ENABLE_PIC=ON \
+-DLLVM_ENABLE_RTTI:BOOL=ON \
+-DLLVM_ENABLE_EH:BOOL=ON \
+-DLLVM_ENABLE_ZLIB:BOOL=ON \
+-DLLVM_ENABLE_Z3_SOLVER:BOOL=ON \
+-DLLVM_ENABLE_LIBXML2:BOOL=ON \
+-DCLANG_ENABLE_STATIC_ANALYZER:BOOL=OFF \
+-DLLVM_HOST_TRIPLE="i686-generic-linux" \
+-DLLVM_INCLUDE_TESTS:BOOL=OFF \
+-DCLANG_INCLUDE_TESTS:BOOL=OFF \
+-DLLVM_INSTALL_UTILS:BOOL=OFF \
+-DLLVM_OPTIMIZED_TABLEGEN:BOOL=ON \
+-DLLVM_REQUIRES_RTTI:BOOL=ON \
+-DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3 \
+-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+-DLLVM_BUILD_32_BITS:BOOL=ON \
+-Wno-dev

@@ -1,0 +1,16 @@
+export CCACHE_DISABLE=true
+export PATH="/usr/lib64/ccache/bin:$PATH"
+export CCACHE_NOHASHDIR=true
+export CCACHE_CPP2=true
+export CCACHE_SLOPPINESS=modules,include_file_mtime,include_file_ctime,time_macros,pch_defines,file_stat_matches,clang_index_store,system_headers,locale
+export CCACHE_DIR=/var/tmp/ccache
+export CCACHE_BASEDIR=/builddir/build/BUILD
+#
+unset ASFLAGS
+unset LDFLAGS
+unset CFLAGS
+unset CXXFLAGS
+unset FCFLAGS
+unset FFLAGS
+export V=1
+export VERBOSE=1
