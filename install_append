@@ -1,4 +1,0 @@
-pushd %{buildroot}/usr/lib64
-mkdir -p ../lib/bfd-plugins
-ln -s ../../lib64/LLVMgold.so ../lib/bfd-plugins
-popd
